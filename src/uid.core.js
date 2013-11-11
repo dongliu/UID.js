@@ -8,11 +8,11 @@
 function UID() {}
 
 /**
- * The simplest function to get an UUID string.
- * @returns {string} A version 4 UUID string.
+ * The simplest function to get an UID string.
+ * @returns {string} A version 4 UID string.
  */
 UID.generate = function() {
-  var rand = UUID._gri, hex = UUID._ha;
+  var rand = UID._gri, hex = UID._ha;
   return  hex(rand(32), 8)          // time_low
         + hex(rand(16), 4)          // time_mid
         + hex(0x4000 | rand(12), 4) // time_hi_and_version
