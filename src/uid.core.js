@@ -5,13 +5,13 @@
  */
 
 /** @constructor */
-function UUID() {}
+function UID() {}
 
 /**
  * The simplest function to get an UUID string.
  * @returns {string} A version 4 UUID string.
  */
-UUID.generate = function() {
+UID.generate = function() {
   var rand = UUID._gri, hex = UUID._ha;
   return  hex(rand(32), 8)          // time_low
         + hex(rand(16), 4)          // time_mid
@@ -25,7 +25,7 @@ UUID.generate = function() {
  * @param {int} x A positive integer ranging from 0 to 53, inclusive.
  * @returns {int} An unsigned x-bit random integer (0 <= f(x) < 2^x).
  */
-UUID._gri = function(x) { // _getRandomInt
+UID._gri = function(x) { // _getRandomInt
   if (x <   0) return NaN;
   if (x <= 30) return (0 | Math.random() * (1 <<      x));
   if (x <= 53) return (0 | Math.random() * (1 <<     30))
@@ -39,7 +39,7 @@ UUID._gri = function(x) { // _getRandomInt
  * @param {int} length
  * @returns {string}
  */
-UUID._ha = function(num, length) {  // _hexAligner
+UID._ha = function(num, length) {  // _hexAligner
   var str = num.toString(16), i = length - str.length, z = "0";
   for (; i > 0; i >>>= 1, z += z) { if (i & 1) { str = z + str; } }
   return str;
